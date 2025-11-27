@@ -1,0 +1,56 @@
+import { Patient } from '../types';
+
+export const MOCK_PATIENTS: Patient[] = [
+  {
+    id: '1',
+    name: 'John Smith',
+    age: 35,
+    gender: 'Male',
+    status: 'Active',
+    avatarUrl: 'https://i.pravatar.cc/150?u=john',
+    lastAppointment: '26-11-2024',
+    upcomingAppointment: '31-11-2024',
+    phone: '(319) 555-0115',
+    email: 'smith.johnny@gmail.com',
+    notes: [
+      {
+        id: 'n1',
+        title: 'Getting better',
+        date: '26-11-2024',
+        description: 'Patient reports improved glucose control. A1C decreased from 7.2 to 6.8. Maintaining current medication regimen.',
+      },
+      {
+        id: 'n2',
+        title: 'Initial Checkup',
+        date: '20-11-2024',
+        description: 'Initial consultation regarding dietary habits and exercise routine.',
+      },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Leslie Alexander',
+    age: 35,
+    gender: 'Male',
+    status: 'Pending',
+    avatarUrl: 'https://i.pravatar.cc/150?u=leslie',
+    lastAppointment: '20-11-2024',
+    upcomingAppointment: '01-12-2024',
+    phone: '(319) 555-0120',
+    email: 'leslie.a@gmail.com',
+    notes: [],
+  },
+  {
+    id: '3',
+    name: 'Savannah Nguyen',
+    age: 35,
+    gender: 'Male',
+    status: 'Active',
+    avatarUrl: 'https://i.pravatar.cc/150?u=savannah',
+    lastAppointment: '15-11-2024',
+    upcomingAppointment: '05-12-2024',
+    phone: '(319) 555-0133',
+    email: 'sav.nguyen@gmail.com',
+    notes: [],
+  },
+];
