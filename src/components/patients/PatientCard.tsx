@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, LayoutAnimation, Platform, UIManager } from 'react-native';
-import { ChevronRight, ChevronDown } from 'lucide-react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Avatar } from '../common/Avatar';
 import { PatientDetailCard } from './PatientDetailCard';
 import { Patient } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
-
-if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
-  UIManager.setLayoutAnimationEnabledExperimental(true);
-}
 
 interface Props {
   patient: Patient;
@@ -20,7 +16,6 @@ export const PatientCard: React.FC<Props> = ({ patient, onOpenNotes }) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggle = () => {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setExpanded(!expanded);
   };
 
@@ -32,7 +27,11 @@ export const PatientCard: React.FC<Props> = ({ patient, onOpenNotes }) => {
           <Text style={styles.name}>{patient.name}</Text>
           <Text style={styles.meta}>{patient.gender} • Age: {patient.age}</Text>
         </View>
-        {expanded ? <ChevronDown color={COLORS.textSecondary} /> : <ChevronRight color={COLORS.textSecondary} />}
+        {expanded ? (
+          <Ionicons name="chevron-down" size={24} color={COLORS.textSecondary} />
+        ) : (
+          <Ionicons name="chevron-forward" size={24} color={COLORS.textSecondary} />
+        )}
       </TouchableOpacity>
 
       {expanded && (
@@ -57,8 +56,23 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 2,
   },
-  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
-  info: { flex: 1, marginLeft: SPACING.m },
-  name: { fontSize: 16, fontWeight: '700', color: COLORS.text },
-  meta: { fontSize: 14, color: COLORS.textSecondary, marginTop: 2 },
+  header: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'space-between' 
+  },
+  info: { 
+    flex: 1, 
+    marginLeft: SPACING.m 
+  },
+  name: { 
+    fontSize: 16, 
+    fontWeight: '700', 
+    color: COLORS.text 
+  },
+  meta: { 
+    fontSize: 14, 
+    color: COLORS.textSecondary, 
+    marginTop: 2 
+  },
 });

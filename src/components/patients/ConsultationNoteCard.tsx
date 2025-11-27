@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Calendar } from 'lucide-react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Note } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
@@ -11,7 +11,7 @@ export const ConsultationNoteCard: React.FC<{ note: Note }> = ({ note }) => {
       <Text style={styles.title}>{note.title}</Text>
       <Text style={styles.desc}>{note.description}</Text>
       <View style={styles.dateRow}>
-        <Calendar size={14} color={COLORS.primary} />
+        <Ionicons name="calendar-outline" size={14} color={COLORS.primary} />
         <Text style={styles.date}>{note.date}</Text>
       </View>
       <TouchableOpacity style={styles.btn}>
