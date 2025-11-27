@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Calendar, Phone, Mail } from 'lucide-react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Patient } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
@@ -16,12 +16,12 @@ export const PatientDetailCard: React.FC<Props> = ({ patient, onOpenNotes }) => 
       {/* Appointments */}
       <View style={styles.appointmentRow}>
         <View style={styles.apptItem}>
-          <Calendar size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
+          <Ionicons name="calendar-outline" size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
           <Text style={styles.label}>Last appointment</Text>
           <Text style={styles.value}>{patient.lastAppointment}</Text>
         </View>
         <View style={styles.apptItem}>
-          <Calendar size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
+          <Ionicons name="calendar-outline" size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
           <Text style={styles.label}>Upcoming</Text>
           <Text style={styles.value}>{patient.upcomingAppointment}</Text>
         </View>
@@ -30,11 +30,11 @@ export const PatientDetailCard: React.FC<Props> = ({ patient, onOpenNotes }) => 
       {/* Contact */}
       <Text style={styles.sectionHeader}>Contact Information</Text>
       <View style={styles.contactRow}>
-        <Phone size={14} color={COLORS.textSecondary} />
+        <Ionicons name="call-outline" size={14} color={COLORS.textSecondary} />
         <Text style={styles.contactText}>{patient.phone}</Text>
       </View>
       <View style={styles.contactRow}>
-        <Mail size={14} color={COLORS.textSecondary} />
+        <Ionicons name="mail-outline" size={14} color={COLORS.textSecondary} />
         <Text style={styles.contactText}>{patient.email}</Text>
       </View>
 
