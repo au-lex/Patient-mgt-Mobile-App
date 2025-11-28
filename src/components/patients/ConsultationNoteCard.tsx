@@ -24,14 +24,16 @@ export const ConsultationNoteCard: React.FC<{ note: Note }> = ({ note }) => {
 
 const styles = StyleSheet.create({
   card: {
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.border,
+
     paddingBottom: SPACING.m,
     marginBottom: SPACING.l,
+    padding: SPACING.m,
+    backgroundColor: COLORS.white,
+    borderRadius: 8,
   },
   title: { 
     fontSize: 14, 
-    fontFamily: FONTS.bold,
+    fontFamily: FONTS.medium,
     color: COLORS.text, 
     marginBottom: 4 
   },

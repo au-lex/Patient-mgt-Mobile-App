@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end' 
   },
   modalContent: { 
-    backgroundColor: COLORS.white, 
+    backgroundColor: COLORS.background, 
     borderTopLeftRadius: 24, 
     borderTopRightRadius: 24, 
     height: '65%', 
@@ -146,8 +146,8 @@ const styles = StyleSheet.create({
     marginBottom: SPACING.m 
   },
   modalTitle: { 
-    fontSize: 18, 
-    fontFamily: FONTS.bold,
+    fontSize: 16, 
+    fontFamily: FONTS.medium,
     textAlign: 'center', 
     color: COLORS.text 
   },
