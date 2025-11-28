@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
 import { Avatar } from '../common/Avatar';
 import { PatientDetailCard } from './PatientDetailCard';
 import { Patient } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
+import { FONTS } from '../../utils/font';
 
 interface Props {
   patient: Patient;
@@ -14,31 +16,50 @@ interface Props {
 
 export const PatientCard: React.FC<Props> = ({ patient, onOpenNotes }) => {
   const [expanded, setExpanded] = useState(false);
+  const animationRef = useRef<any>(null);
 
-  const toggle = () => {
-    setExpanded(!expanded);
+  const toggle = async () => {
+    if (expanded) {
+      // Animate out before closing
+      await animationRef.current?.fadeOutUp(200);
+      setExpanded(false);
+    } else {
+      // Open and animate in
+      setExpanded(true);
+    }
   };
 
   return (
     <View style={styles.card}>
-      <TouchableOpacity onPress={toggle} style={styles.header} activeOpacity={0.7}>
+      <TouchableOpacity 
+        onPress={toggle} 
+        style={styles.header} 
+        activeOpacity={0.7}
+      >
         <Avatar url={patient.avatarUrl} />
         <View style={styles.info}>
           <Text style={styles.name}>{patient.name}</Text>
           <Text style={styles.meta}>{patient.gender} • Age: {patient.age}</Text>
         </View>
-        {expanded ? (
-          <Ionicons name="chevron-down" size={24} color={COLORS.textSecondary} />
-        ) : (
-          <Ionicons name="chevron-forward" size={24} color={COLORS.textSecondary} />
-        )}
+        <Ionicons 
+          name={expanded ? "chevron-down" : "chevron-forward"} 
+          size={24} 
+          color={COLORS.textSecondary} 
+        />
       </TouchableOpacity>
 
       {expanded && (
-        <PatientDetailCard 
-          patient={patient} 
-          onOpenNotes={() => onOpenNotes(patient)} 
-        />
+        <Animatable.View
+          ref={animationRef}
+          animation="fadeInDown"
+          duration={300}
+          easing="ease-out"
+        >
+          <PatientDetailCard 
+            patient={patient} 
+            onOpenNotes={() => onOpenNotes(patient)} 
+          />
+        </Animatable.View>
       )}
     </View>
   );
@@ -67,11 +88,12 @@ const styles = StyleSheet.create({
   },
   name: { 
     fontSize: 16, 
-    fontWeight: '700', 
+    fontFamily: FONTS.bold,
     color: COLORS.text 
   },
   meta: { 
     fontSize: 14, 
+    fontFamily: FONTS.regular,
     color: COLORS.textSecondary, 
     marginTop: 2 
   },

@@ -7,6 +7,7 @@ import { ConsultationNoteCard } from '../components/patients/ConsultationNoteCar
 import { Patient } from '../types';
 import { COLORS } from '../utils/colors';
 import { SPACING } from '../utils/spacing';
+import { FONTS } from '../utils/font';
 
 const TABS = ['All patients', 'Active', 'Pending', 'Past'];
 
@@ -29,7 +30,9 @@ export const PatientsScreen = () => {
               onPress={() => setActiveFilter(tab)}
               style={[styles.tabItem, activeFilter === tab && styles.activeTab]}
             >
-              <Text style={[styles.tabText, activeFilter === tab && styles.activeTabText]}>{tab}</Text>
+              <Text style={[styles.tabText, activeFilter === tab && styles.activeTabText]}>
+                {tab}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -43,7 +46,7 @@ export const PatientsScreen = () => {
             <PatientCard patient={item} onOpenNotes={setSelectedPatient} />
           )}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 100 }}
+          contentContainerStyle={styles.listContent}
         />
 
         {/* Modal */}
@@ -61,7 +64,7 @@ export const PatientsScreen = () => {
             <View style={styles.modalContent} onStartShouldSetResponder={() => true}>
               <View style={styles.modalHandle} />
               <Text style={styles.modalTitle}>Consultation notes</Text>
-              <ScrollView style={{ marginTop: SPACING.m }}>
+              <ScrollView style={styles.scrollView}>
                 {selectedPatient?.notes.map((note) => (
                   <ConsultationNoteCard key={note.id} note={note} />
                 ))}
@@ -78,19 +81,83 @@ export const PatientsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: COLORS.background },
-  container: { flex: 1, paddingHorizontal: SPACING.m },
-  headerTitle: { fontSize: 24, fontWeight: 'bold', color: COLORS.text, textAlign: 'center', marginVertical: SPACING.m },
-  tabs: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: SPACING.m, borderBottomWidth: 1, borderColor: COLORS.border },
-  tabItem: { paddingBottom: 8, borderBottomWidth: 2, borderBottomColor: 'transparent' },
-  activeTab: { borderBottomColor: COLORS.primary },
-  tabText: { color: COLORS.textSecondary, fontSize: 14 },
-  activeTabText: { color: COLORS.primary, fontWeight: '600' },
+  safeArea: { 
+    flex: 1, 
+    backgroundColor: COLORS.background 
+  },
+  container: { 
+    flex: 1, 
+    paddingHorizontal: SPACING.m 
+  },
+  headerTitle: { 
+    fontSize: 24, 
+    fontFamily: FONTS.bold,
+    color: COLORS.text, 
+    textAlign: 'center', 
+    marginVertical: SPACING.m 
+  },
+  tabs: { 
+    flexDirection: 'row', 
+    justifyContent: 'space-between', 
+    marginBottom: SPACING.m, 
+    borderBottomWidth: 1, 
+    borderColor: COLORS.border 
+  },
+  tabItem: { 
+    paddingBottom: 8, 
+    borderBottomWidth: 2, 
+    borderBottomColor: 'transparent' 
+  },
+  activeTab: { 
+    borderBottomColor: COLORS.primary 
+  },
+  tabText: { 
+    color: COLORS.textSecondary, 
+    fontSize: 14,
+    fontFamily: FONTS.regular
+  },
+  activeTabText: { 
+    color: COLORS.primary, 
+    fontFamily: FONTS.semibold
+  },
+  listContent: {
+    paddingBottom: 100
+  },
   
   // Modal
-  modalOverlay: { flex: 1, backgroundColor: COLORS.overlay, justifyContent: 'flex-end' },
-  modalContent: { backgroundColor: COLORS.white, borderTopLeftRadius: 24, borderTopRightRadius: 24, height: '65%', padding: SPACING.l },
-  modalHandle: { width: 40, height: 4, backgroundColor: COLORS.border, borderRadius: 2, alignSelf: 'center', marginBottom: SPACING.m },
-  modalTitle: { fontSize: 18, fontWeight: 'bold', textAlign: 'center', color: COLORS.text },
-  emptyText: { textAlign: 'center', color: COLORS.textSecondary, marginTop: 20 },
+  modalOverlay: { 
+    flex: 1, 
+    backgroundColor: COLORS.overlay, 
+    justifyContent: 'flex-end' 
+  },
+  modalContent: { 
+    backgroundColor: COLORS.white, 
+    borderTopLeftRadius: 24, 
+    borderTopRightRadius: 24, 
+    height: '65%', 
+    padding: SPACING.l 
+  },
+  modalHandle: { 
+    width: 40, 
+    height: 4, 
+    backgroundColor: COLORS.border, 
+    borderRadius: 2, 
+    alignSelf: 'center', 
+    marginBottom: SPACING.m 
+  },
+  modalTitle: { 
+    fontSize: 18, 
+    fontFamily: FONTS.bold,
+    textAlign: 'center', 
+    color: COLORS.text 
+  },
+  scrollView: {
+    marginTop: SPACING.m
+  },
+  emptyText: { 
+    textAlign: 'center', 
+    fontFamily: FONTS.regular,
+    color: COLORS.textSecondary, 
+    marginTop: 20 
+  },
 });
