@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Modal, ScrollView,  } from 'react-native';
 import { usePatientStore } from '../store/patientStore';
 import { PatientCard } from '../components/patients/PatientCard';
 import { SearchBar } from '../components/common/SearchBar';
@@ -18,7 +18,7 @@ export const PatientsScreen = () => {
   const patients = getFilteredPatients();
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.headerTitle}>Patients</Text>
 
@@ -76,7 +76,7 @@ export const PatientsScreen = () => {
           </TouchableOpacity>
         </Modal>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -90,11 +90,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: SPACING.m 
   },
   headerTitle: { 
-    fontSize: 24, 
-    fontFamily: FONTS.bold,
+    fontSize: 18, 
+    fontFamily: FONTS.semibold,
     color: COLORS.text, 
     textAlign: 'center', 
-    marginVertical: SPACING.m 
+    marginVertical: SPACING.l
   },
   tabs: { 
     flexDirection: 'row', 

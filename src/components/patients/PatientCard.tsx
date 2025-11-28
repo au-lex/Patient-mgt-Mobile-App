@@ -43,7 +43,7 @@ export const PatientCard: React.FC<Props> = ({ patient, onOpenNotes }) => {
         </View>
         <Ionicons 
           name={expanded ? "chevron-down" : "chevron-forward"} 
-          size={24} 
+          size={18} 
           color={COLORS.textSecondary} 
         />
       </TouchableOpacity>
@@ -71,11 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: SPACING.m,
     padding: SPACING.m,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    elevation: 2,
+
   },
   header: { 
     flexDirection: 'row', 
@@ -88,7 +84,7 @@ const styles = StyleSheet.create({
   },
   name: { 
     fontSize: 16, 
-    fontFamily: FONTS.bold,
+    fontFamily: FONTS.medium,
     color: COLORS.text 
   },
   meta: { 
