@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Note } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
+import { FONTS } from '../../utils/font';
 
 export const ConsultationNoteCard: React.FC<{ note: Note }> = ({ note }) => {
   return (
@@ -28,10 +29,40 @@ const styles = StyleSheet.create({
     paddingBottom: SPACING.m,
     marginBottom: SPACING.l,
   },
-  title: { fontSize: 14, fontWeight: '700', color: COLORS.text, marginBottom: 4 },
-  desc: { fontSize: 13, color: COLORS.textSecondary, lineHeight: 20, marginBottom: SPACING.s },
-  dateRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: SPACING.s },
-  date: { fontSize: 12, color: COLORS.textSecondary },
-  btn: { borderWidth: 1, borderColor: COLORS.primary, borderRadius: 20, paddingVertical: 8, alignItems: 'center' },
-  btnText: { color: COLORS.primary, fontSize: 12, fontWeight: '600' },
+  title: { 
+    fontSize: 14, 
+    fontFamily: FONTS.bold,
+    color: COLORS.text, 
+    marginBottom: 4 
+  },
+  desc: { 
+    fontSize: 13, 
+    fontFamily: FONTS.regular,
+    color: COLORS.textSecondary, 
+    lineHeight: 20, 
+    marginBottom: SPACING.s 
+  },
+  dateRow: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginBottom: SPACING.s 
+  },
+  date: { 
+    fontSize: 12, 
+    fontFamily: FONTS.regular,
+    color: COLORS.textSecondary,
+    marginLeft: 6
+  },
+  btn: { 
+    borderWidth: 1, 
+    borderColor: COLORS.primary, 
+    borderRadius: 20, 
+    paddingVertical: 8, 
+    alignItems: 'center' 
+  },
+  btnText: { 
+    color: COLORS.primary, 
+    fontSize: 12, 
+    fontFamily: FONTS.semibold
+  },
 });

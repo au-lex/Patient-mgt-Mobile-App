@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Patient } from '../../types';
 import { COLORS } from '../../utils/colors';
 import { SPACING } from '../../utils/spacing';
+import { FONTS } from '../../utils/font';
 
 interface Props {
   patient: Patient;
@@ -16,12 +17,22 @@ export const PatientDetailCard: React.FC<Props> = ({ patient, onOpenNotes }) => 
       {/* Appointments */}
       <View style={styles.appointmentRow}>
         <View style={styles.apptItem}>
-          <Ionicons name="calendar-outline" size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
+          <Ionicons 
+            name="calendar-outline" 
+            size={14} 
+            color={COLORS.primary} 
+            style={styles.icon} 
+          />
           <Text style={styles.label}>Last appointment</Text>
           <Text style={styles.value}>{patient.lastAppointment}</Text>
         </View>
         <View style={styles.apptItem}>
-          <Ionicons name="calendar-outline" size={14} color={COLORS.primary} style={{ marginBottom: 4 }} />
+          <Ionicons 
+            name="calendar-outline" 
+            size={14} 
+            color={COLORS.primary} 
+            style={styles.icon} 
+          />
           <Text style={styles.label}>Upcoming</Text>
           <Text style={styles.value}>{patient.upcomingAppointment}</Text>
         </View>
@@ -65,19 +76,71 @@ const styles = StyleSheet.create({
     padding: SPACING.s,
     marginBottom: SPACING.m,
   },
-  apptItem: { flex: 1, alignItems: 'center' },
-  label: { fontSize: 11, color: COLORS.textSecondary },
-  value: { fontSize: 13, fontWeight: '600', color: COLORS.text, marginTop: 2 },
-  sectionHeader: { fontSize: 14, fontWeight: '500', marginBottom: SPACING.s },
-  contactRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 6 },
-  contactText: { fontSize: 14, color: COLORS.textSecondary },
-  buttonRow: { flexDirection: 'row', gap: SPACING.m, marginTop: SPACING.m },
+  apptItem: { 
+    flex: 1, 
+    alignItems: 'center' 
+  },
+  icon: {
+    marginBottom: 4
+  },
+  label: { 
+    fontSize: 11, 
+    fontFamily: FONTS.regular,
+    color: COLORS.textSecondary 
+  },
+  value: { 
+    fontSize: 13, 
+    fontFamily: FONTS.semibold,
+    color: COLORS.text, 
+    marginTop: 2 
+  },
+  sectionHeader: { 
+    fontSize: 14, 
+    fontFamily: FONTS.medium,
+    marginBottom: SPACING.s 
+  },
+  contactRow: { 
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    marginBottom: 6,
+    paddingLeft: 8
+  },
+  contactText: { 
+    fontSize: 14, 
+    fontFamily: FONTS.regular,
+    color: COLORS.textSecondary,
+    marginLeft: 8
+  },
+  buttonRow: { 
+    flexDirection: 'row', 
+    marginTop: SPACING.m,
+    justifyContent: 'space-between'
+  },
   outlineBtn: {
-    flex: 1, padding: 10, borderRadius: 20, borderWidth: 1, borderColor: COLORS.primary, alignItems: 'center'
+    flex: 1, 
+    padding: 10, 
+    borderRadius: 20, 
+    borderWidth: 1, 
+    borderColor: COLORS.primary, 
+    alignItems: 'center',
+    marginRight: SPACING.s
   },
-  outlineText: { color: COLORS.primary, fontWeight: '600', fontSize: 13 },
+  outlineText: { 
+    color: COLORS.primary, 
+    fontFamily: FONTS.semibold,
+    fontSize: 13 
+  },
   primaryBtn: {
-    flex: 1, padding: 10, borderRadius: 20, backgroundColor: COLORS.primary, alignItems: 'center'
+    flex: 1, 
+    padding: 10, 
+    borderRadius: 20, 
+    backgroundColor: COLORS.primary, 
+    alignItems: 'center',
+    marginLeft: SPACING.s
   },
-  primaryText: { color: COLORS.white, fontWeight: '600', fontSize: 13 },
+  primaryText: { 
+    color: COLORS.white, 
+    fontFamily: FONTS.semibold,
+    fontSize: 13 
+  },
 });

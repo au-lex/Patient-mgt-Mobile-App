@@ -1,8 +1,8 @@
 export const COLORS = {
-  primary: '#26C6DA', // Teal
+  primary: '#20BEB8', 
   primaryDark: '#0097A7',
-  secondary: '#2F80ED', // Blue
-  background: '#F8F9FA',
+  secondary: '#2F80ED',
+  background: '#F8FAFC',
   white: '#FFFFFF',
   text: '#1C2A3A',
   textSecondary: '#6E7A8A',
