@@ -17,23 +17,30 @@ export const PatientDetailCard: React.FC<Props> = ({ patient, onOpenNotes }) => 
       {/* Appointments */}
       <View style={styles.appointmentRow}>
         <View style={styles.apptItem}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+
           <Ionicons 
             name="calendar-outline" 
             size={14} 
             color={COLORS.primary} 
             style={styles.icon} 
-          />
+            />
           <Text style={styles.label}>Last appointment</Text>
+            </View>
           <Text style={styles.value}>{patient.lastAppointment}</Text>
         </View>
+
         <View style={styles.apptItem}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+
           <Ionicons 
             name="calendar-outline" 
             size={14} 
             color={COLORS.primary} 
             style={styles.icon} 
-          />
+            />
           <Text style={styles.label}>Upcoming</Text>
+            </View>
           <Text style={styles.value}>{patient.upcomingAppointment}</Text>
         </View>
       </View>
@@ -64,21 +71,27 @@ export const PatientDetailCard: React.FC<Props> = ({ patient, onOpenNotes }) => 
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: SPACING.m,
-    borderTopWidth: 1,
-    borderTopColor: COLORS.border,
+  
+
     paddingTop: SPACING.m,
   },
   appointmentRow: {
     flexDirection: 'row',
-    backgroundColor: COLORS.background,
-    borderRadius: 8,
-    padding: SPACING.s,
+    // backgroundColor: COLORS.background,
+   
+ 
     marginBottom: SPACING.m,
+    gap: SPACING.m,
   },
   apptItem: { 
     flex: 1, 
-    alignItems: 'center' 
+    // alignItems: 'center' ,
+    justifyContent: 'center',
+    backgroundColor: "#F2F5F8",
+    padding: SPACING.s,
+    borderRadius: 8,
+    paddingLeft: SPACING.m
+
   },
   icon: {
     marginBottom: 4
@@ -103,7 +116,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row', 
     alignItems: 'center', 
     marginBottom: 6,
-    paddingLeft: 8
+    // paddingLeft: 8
   },
   contactText: { 
     fontSize: 14, 
@@ -118,12 +131,13 @@ const styles = StyleSheet.create({
   },
   outlineBtn: {
     flex: 1, 
-    padding: 10, 
+    padding: 8, 
     borderRadius: 20, 
     borderWidth: 1, 
     borderColor: COLORS.primary, 
     alignItems: 'center',
-    marginRight: SPACING.s
+    marginRight: SPACING.s,
+      justifyContent: 'center'
   },
   outlineText: { 
     color: COLORS.primary, 
@@ -132,11 +146,12 @@ const styles = StyleSheet.create({
   },
   primaryBtn: {
     flex: 1, 
-    padding: 10, 
+    padding: 8, 
     borderRadius: 20, 
     backgroundColor: COLORS.primary, 
     alignItems: 'center',
-    marginLeft: SPACING.s
+    marginLeft: SPACING.s,
+    justifyContent: 'center'
   },
   primaryText: { 
     color: COLORS.white, 
